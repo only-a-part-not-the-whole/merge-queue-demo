@@ -8,6 +8,6 @@ def apply_discount(price: float, percent: float) -> float:
     return round(price * (1 - percent / 100), 2)
 
 
-def add_tax(price: float, rate: float = 0.2) -> float:
-    """Return price with tax added at the given rate."""
+def add_vat(price: float, rate: float = 0.2) -> float:
+    """Return price with VAT added at the given rate."""
     return round(price * (1 + rate), 2)
