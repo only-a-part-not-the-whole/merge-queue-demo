@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+  # Required for merge queue: the queue creates temporary
+  # gh-readonly-queue/main/pr-N-<sha> branches and fires this event.
+  merge_group:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Show what is being tested
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Ref:   ${{ github.ref }}"
+          git log --oneline -5
+      - name: Slow down so the queue is observable
+        run: sleep 45
+      - name: Run tests
+        run: python -m unittest discover -v
