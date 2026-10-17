@@ -1,6 +1,6 @@
 import unittest
 
-from shop.pricing import add_tax, apply_discount
+from shop.pricing import add_vat, apply_discount
 
 
 class PricingTest(unittest.TestCase):
@@ -11,8 +11,8 @@ class PricingTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             apply_discount(100, 150)
 
-    def test_add_tax(self):
-        self.assertEqual(add_tax(100), 120.0)
+    def test_add_vat(self):
+        self.assertEqual(add_vat(100), 120.0)
 
 
 if __name__ == "__main__":
